@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .fade-in {
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .fade-in-visible {
+            opacity: 1;
+        }
+    </style>
+    <title>Intersection Observer Animation</title>
+</head>
+
+<body>
+
+    <div class="fade-in second-about">
+        <h1>Hello, I'm fading in!</h1>
+        <p>This element will fade in when it enters the viewport.</p>
+    </div>
+
+    <div class="fade-in" id="usluga-4">
+        <h1>Hello, I'm fading in too!</h1>
+        <p>This element will also fade in when it enters the viewport.</p>
+    </div>
+
+    <script>
+        // Intersection Observer options
+        const options = {
+            root: null, // use the viewport as the root
+            rootMargin: '0px', // no margin
+            threshold: 0.5 // trigger when 50% of the element is visible
+        };
+
+        // Callback function to handle intersection changes
+        const handleIntersection = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Add the visibility class to start the fade-in animation
+                    entry.target.classList.add('fade-in-visible');
+                    // Unobserve the target to stop further callbacks
+                    observer.unobserve(entry.target);
+                }
+            });
+        };
+
+        // Create an Intersection Observer
+        const observer = new IntersectionObserver(handleIntersection, options);
+
+        // Target elements to observe
+        const targetElement = document.querySelector('.second-about');
+        const targetElement2 = document.querySelector('#usluga-4');
+
+        // Check if elements are valid before observing
+        if (targetElement) {
+            observer.observe(targetElement);
+        } else {
+            console.error("Element with class 'second-about' not found.");
+        }
+
+        if (targetElement2) {
+            observer.observe(targetElement2);
+        } else {
+            console.error("Element with ID 'usluga-4' not found.");
+        }
+    </script>
+</body>
+
+</html>
