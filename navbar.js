@@ -1,6 +1,0 @@
-const menuIcon = document.querySelector('.menu-icon');
-const navLinks = document.querySelector('.nav_links');
-
-menuIcon.addEventListener('click', () => {
-    navLinks.classList.toggle('show');
-});
