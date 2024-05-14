@@ -24,4 +24,4 @@
   
   ### :small_orange_diamond: I have also integrated **Google Maps API** to show the location of his business.
   
-  ### :small_orange_diamond: I know it's not the prettiest looking code you'll ever see, but hey, it's my first website and it works 😆
+  ### :small_orange_diamond: I know it's not *the prettiest looking code* you'll ever see, but hey, it's my first website and it works 😆
